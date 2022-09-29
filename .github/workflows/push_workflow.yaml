@@ -13,6 +13,8 @@ jobs:
         with:
           php-version: '8.0'
       - uses: actions/checkout@v1
+      - name: Move into catalogue-service folder
+        run: cd /catalogue-service
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install Composer Dependencies
