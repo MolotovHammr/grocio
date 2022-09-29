@@ -16,7 +16,7 @@ jobs:
       - name: ls
         run: ls
       - name: Move into catalogue-service folder
-        run: cd catalogue-service
+        run: cd /catalogue-service
       - name: ls
         run: ls
       - name: Copy .env
