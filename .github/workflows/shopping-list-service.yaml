@@ -1,4 +1,4 @@
-name: push_workflow
+name: shopping-list service
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 defaults:
   run:
-    working-directory: catalogue-service
+    working-directory: ./shopping-list-service
 
 jobs:
   laravel-tests:
