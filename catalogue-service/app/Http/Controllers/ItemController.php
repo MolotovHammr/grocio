@@ -2,62 +2,102 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Models\Item;
+use App\Services\ItemService;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Response as HttpResponse;
 
 
 class ItemController extends Controller
 {
 
-    public function index()
+    public function index(): Collection
     {
-        return Item::all();
+        try {
+            return Item::all();
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
-    public function store(Request $request)
+    public function store(Request $request): HttpResponse
     {
-        $data = $request->validate([
-            'name' => 'required|max:255',
-            'weight' => 'required|max:255'
-        ]);
+        try {
+            $data = $request->validate([
+                'name' => 'required|max:255',
+                'weight' => 'required|max:255'
+            ]);
+    
+            $item = (new ItemService())->create($data);
+    
+            return response(
+                [
+                    'item' => $item,
+                    'message' => 'Item succesfully created' 
+                ], 201 );
 
-        $item = Item::create($data);
-
-        return response(
-            [
-                'item' => $item,
-                'message' => 'Item succesfully created' 
-            ]
-            , 201 );
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
-    public function update(Request $request, $itemId)
+    public function show(Int $itemId): HttpResponse
     {
-        $item = Item::find($itemId);
 
-        $data = $request->validate([
-            'name' => 'required|max:255',
-            'weight' => 'required|max:255'
-        ]);
+        try {
+            $item = Item::query()->findOrFail($itemId);
 
-        $item->update($data);
+            return response(
+                [
+                    'item' => $item, 
+                ], 200 );
 
-        return response([
-            'message' => 'Item succesfully updated'
-        ], 200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
+    }
+
+    public function update(Request $request, Int $itemId): HttpResponse
+    {
+        try {
+            $item = Item::find($itemId);
+
+            $data = $request->validate([
+                'name' => 'required|max:255',
+                'weight' => 'required|max:255'
+            ]);
+    
+            $item->update($data);
+    
+            return response(
+                [
+                    'message' => 'item succesfully updated'
+                ], 200);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
     }
 
 
-    public function delete($itemId)
+    public function delete(Int $itemId): HttpResponse
     {
-        $item = Item::find($itemId);
+        try {
+            $item = Item::find($itemId);
 
-        $item->delete();
+            $item->delete();
+    
+            return response(
+                [
+                'message' => 'item succesfully deleted'
+                ], 200);
 
-        return response([
-            'message' => 'Item succesfully deleted'
-        ], 200);
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
     }
 }
