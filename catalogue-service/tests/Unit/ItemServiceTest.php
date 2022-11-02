@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Models\Catalogue;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Services\ItemService;
@@ -16,11 +17,14 @@ class ItemServiceTest extends TestCase
     {
         //Arrange 
         $itemService = (new ItemService());
+        $catalogue_id = Catalogue::factory()->create()->id;
         $this->assertDatabaseCount('items', 0);
 
         $itemData = [
-            'name' => 'Ham',
-            'weight' => 0.5
+            'name' => 'Cheese',
+            'quantity' => 500.0,
+            'unit' => 'l',
+            'catalogue_id' => $catalogue_id,
         ];
 
         //Act
@@ -28,7 +32,7 @@ class ItemServiceTest extends TestCase
 
         //Assert
         $this->assertDatabaseCount('items', 1)
-        ->assertDatabaseHas('items', ['name' => 'Ham']);
+        ->assertDatabaseHas('items', ['name' => 'Cheese']);
     }
 
     public function test_get_all_items()
@@ -59,7 +63,6 @@ class ItemServiceTest extends TestCase
 
     public function test_update_item_by_id()
     {
-     
         //Arrange
         $itemCreated = Item::factory()->create();
         $itemService = (new ItemService());
@@ -80,7 +83,6 @@ class ItemServiceTest extends TestCase
 
     public function test_delete_item()
     {
-
         //Arrange
         $itemCreated = Item::factory()->create();
         $itemService = (new ItemService());

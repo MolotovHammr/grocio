@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Catalogue;
 use App\Models\Item;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -14,9 +15,13 @@ class ItemTest extends TestCase
     public function test_creating_an_item()
     {
         //Arrange
+        $catalogue = Catalogue::factory()->create();
+
         $itemPayload = [
             "name" => "Cheese",
-            "weight" => 500.00
+            'quantity' => 500.0,
+            'unit' => 'g',
+            'catalogue_id' => $catalogue->id
         ];
 
         // Act
@@ -29,7 +34,8 @@ class ItemTest extends TestCase
             "item" => [
                 'id',
                 'name',
-                'weight',
+                'quantity',
+                'unit',
                 'created_at',
                 'updated_at'
             ],
@@ -54,7 +60,8 @@ class ItemTest extends TestCase
             "item" => [
                 'id',
                 'name',
-                'weight',
+                'quantity',
+                'unit',
                 'created_at',
                 'updated_at'
             ]
@@ -77,7 +84,8 @@ class ItemTest extends TestCase
             "*" => [
                 'id',
                 'name',
-                'weight',
+                'quantity',
+                'unit',
                 'created_at',
                 'updated_at'
             ]
@@ -91,7 +99,8 @@ class ItemTest extends TestCase
 
         $itemPayload = [
             "name" => "Cheese2",
-            "weight" => 500.00,
+            'quantity' => 500.0,
+            'unit' => 'g',
         ];
 
         //Act

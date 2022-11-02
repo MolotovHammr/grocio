@@ -26,7 +26,9 @@ class ItemController extends Controller
         try {
             $data = $request->validate([
                 'name' => 'required|max:255',
-                'weight' => 'required|max:255'
+                'quantity' => 'required|max:255',
+                'unit' => 'required|max:255',
+                'catalogue_id' => 'required|max:255',
             ]);
     
             $item = (new ItemService())->create($data);
@@ -66,7 +68,8 @@ class ItemController extends Controller
 
             $data = $request->validate([
                 'name' => 'required|max:255',
-                'weight' => 'required|max:255'
+                'quantity' => 'required|max:255',
+                'unit' => 'required|max:255'
             ]);
     
             $item->update($data);

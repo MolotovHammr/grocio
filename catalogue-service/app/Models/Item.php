@@ -11,6 +11,15 @@ class Item extends Model
 
     protected $fillable = [
         'name',
-        'weight',
+        'quantity',
+        'unit',
+        'catalogue_id'
     ];
+
+    public function catalogue()
+    {
+        return $this->belongsToMany(Catalogue::class, 'catalogue_id');
+    }
 }
+
+
