@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\ActiveItem;
+use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\Item;
 use App\Models\ShoppingList;
@@ -36,17 +37,63 @@ class ActiveItemsServiceTest extends TestCase
     {
         //Arrange
         $activeItem = ActiveItem::factory()->create();
+        $activeItemService = (new ActiveItemService());
 
         // dd($activeItem->id);
         $amount = $activeItem->amount + 1;
-
-        $activeItemService = (new ActiveItemService());
 
         //Act 
         $activeItem = $activeItemService->increase($activeItem->id);
 
         //Assert
         $this->assertEquals($amount, $activeItem->amount);
+        $this->assertDatabaseHas('active_items', ['amount' => $amount])
+        ->assertDatabaseCount('active_items', 1);
     }
 
+    public function test_decreasing_amount_of_item_in_shopping_list()
+    {
+        //Arrange
+        $activeItem = ActiveItem::factory()->create();
+        $activeItemService = (new ActiveItemService());
+
+        $amount = $activeItem->amount - 1;
+
+        //Act 
+        $activeItem = $activeItemService->decrease($activeItem->id);
+
+        //Assert
+        $this->assertEquals($amount, $activeItem->amount);
+        $this->assertDatabaseHas('active_items', ['amount' => $amount])
+        ->assertDatabaseCount('active_items', 1);
+    }
+
+    public function test_decreasing_amount_of_item_to_zero_removes_item()
+    {
+        //Arrange
+        $activeItem = ActiveItem::factory()->create();
+        $activeItem->amount = 1;
+        $activeItem->save();
+
+        $activeItemService = (new ActiveItemService());
+
+        //Act 
+        $activeItem = $activeItemService->decrease($activeItem->id);
+
+        //Assert 
+        $this->assertDatabaseCount('active_items', 0);
+    }
+
+    public function test_remove_item_from_shopping_list()
+    {
+        //Arrange
+        $activeItem = ActiveItem::factory()->create();
+        $activeItemService = (new ActiveItemService());
+
+        //Act 
+        $activeItemService->remove($activeItem->id);
+
+        //Assert
+        $this->assertDatabaseCount('active_items', 0);
+    }
 }

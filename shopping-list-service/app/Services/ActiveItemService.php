@@ -33,7 +33,32 @@ class ActiveItemService
         $newAmount = $activeItem->amount + 1;
 
         $activeItem->amount = $newAmount;
+        $activeItem->save();
 
         return $activeItem;
+    }
+
+    public function decrease(Int $id)
+    {
+        $activeItem = ActiveItem::findOrFail($id);
+        $newAmount = $activeItem->amount - 1;
+
+        if($newAmount == 0)
+        {
+            $activeItem->delete();
+            return 0;
+        }
+
+        $activeItem->amount = $newAmount;
+        $activeItem->save();
+
+        return $activeItem;
+    }
+
+    public function remove(Int $id)
+    {
+        $activeItem = ActiveItem::findOrFail($id);
+        $activeItem->delete();
+        return 0;
     }
 }
