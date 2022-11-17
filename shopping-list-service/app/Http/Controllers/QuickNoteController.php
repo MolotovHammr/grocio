@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class QuickNoteController extends Controller
 {
-    //
+    public function create()
+    {
+        
+    }
 }

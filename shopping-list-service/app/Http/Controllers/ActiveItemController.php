@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class ActiveItemController extends Controller
 {
-    //
+    public function create()
+    {
+        
+    }
 }

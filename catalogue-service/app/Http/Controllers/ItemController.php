@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreItemRequest;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Services\ItemService;
@@ -21,17 +22,12 @@ class ItemController extends Controller
         }
     }
 
-    public function store(Request $request): HttpResponse
+    public function store(StoreItemRequest $request,ItemService $itemService): HttpResponse
     {
         try {
-            $data = $request->validate([
-                'name' => 'required|max:255',
-                'quantity' => 'required|max:255',
-                'unit' => 'required|max:255',
-                'catalogue_id' => 'required|max:255',
-            ]);
+            $data = $request->validated();
     
-            $item = (new ItemService())->create($data);
+            $item =$itemService->create($data);
     
             return response(
                 [
@@ -93,10 +89,7 @@ class ItemController extends Controller
 
             $item->delete();
     
-            return response(
-                [
-                'message' => 'item succesfully deleted'
-                ], 200);
+            return response(['message' => 'item succesfully deleted'], 200);
 
         } catch (\Throwable $th) {
             throw $th;
