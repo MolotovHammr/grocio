@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Catalogue extends Model
 {
@@ -14,6 +15,9 @@ class Catalogue extends Model
         'description'
     ];
 
+    /**
+     * @return HasMany<Item>
+     */
     public function items()
     {
         return $this->hasMany(Item::class);

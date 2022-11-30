@@ -37,8 +37,9 @@ class PingJobCommand extends Command
      *
      * @return int
      */
-    public function handle()
+    public function handle(): int
     {
         PingJob::dispatch();
+        return 1;
     }
 }

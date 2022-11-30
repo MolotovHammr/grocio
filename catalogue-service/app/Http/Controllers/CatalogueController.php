@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCatalogueRequest;
 use App\Services\CatalogueService;
-use Illuminate\Http\Request;
+use Illuminate\Http\Response as HttpResponse;
+
 
 class CatalogueController extends Controller
 {
-    public function store(StoreCatalogueRequest $request, CatalogueService $catalogueService)
+    public function store(StoreCatalogueRequest $request, CatalogueService $catalogueService): HttpResponse
     {
         try {
             $data = $request->validated();
@@ -24,7 +25,7 @@ class CatalogueController extends Controller
         }
     }
 
-    public function show(Int $catalogueId, CatalogueService $catalogueService)
+    public function show(Int $catalogueId, CatalogueService $catalogueService): HttpResponse
     {
         try {
             $catalogue = $catalogueService->show($catalogueId);

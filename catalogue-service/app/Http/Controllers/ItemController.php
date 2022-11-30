@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
-use Illuminate\Http\Request;
-use App\Models\Item;
 use App\Services\ItemService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Response as HttpResponse;
@@ -13,10 +11,16 @@ use Illuminate\Http\Response as HttpResponse;
 
 class ItemController extends Controller
 {
-    public function index(ItemService $itemService): Collection
+
+    public function index(ItemService $itemService): HttpResponse
     {
         try {
-            return $itemService->index();
+            $items = $itemService->index();
+
+            return response(
+                [
+                    'items' => $items,
+                ], 200);
 
         } catch (\Throwable $th) {
             throw $th;
