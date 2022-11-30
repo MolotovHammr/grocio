@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/health', function (){
-    return 'Healthy';
+    return 'Healthyy';
 });
 Route::post('/items', [ItemController::class, 'store']);
 Route::get('/items', [ItemController::class, 'index']);
