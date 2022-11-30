@@ -13,6 +13,8 @@ RUN docker-php-ext-install \
 # Copy Composer binary from the Composer official Docker image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+ENV WEB_DOCUMENT_ROOT /app/public
+
 WORKDIR /app
 COPY . .
 
