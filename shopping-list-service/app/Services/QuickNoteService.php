@@ -8,7 +8,16 @@ class QuickNoteService
 {
     public function create(array $requestData) 
     {
-        QuickNote::create($requestData);
+        $quickNote = QuickNote::create($requestData);
+        
+        return $quickNote;
+    }
 
+    public function update(array $requestData, int $id)
+    {
+        $quickNote = QuickNote::findOrFail($id);
+        $quickNote::update($requestData);
+
+        return $quickNote;
     }
 }

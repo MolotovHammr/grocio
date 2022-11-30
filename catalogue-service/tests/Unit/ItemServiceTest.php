@@ -21,9 +21,16 @@ class ItemServiceTest extends TestCase
         $this->assertDatabaseCount('items', 0);
 
         $itemData = [
-            'name' => 'Cheese',
+            'name' => 'Cheese2',
             'quantity' => 500.0,
-            'unit' => 'l',
+            'unit' => 'g',
+            'energy' => 1000.0,
+            'total_fat' => 500.0,
+            'saturated_fat' => 30.0,
+            'total_carbohydrates' => 20.0,
+            'sugars' => 30.0,
+            'protein' => 15.0,
+            'salt' => 30.0,
             'catalogue_id' => $catalogue_id,
         ];
 
@@ -32,7 +39,7 @@ class ItemServiceTest extends TestCase
 
         //Assert
         $this->assertDatabaseCount('items', 1)
-        ->assertDatabaseHas('items', ['name' => 'Cheese']);
+        ->assertDatabaseHas('items', ['name' => 'Cheese2', 'energy' => 1000.0, 'sugars' => 30.0]);
     }
 
     public function test_get_all_items()
@@ -55,7 +62,7 @@ class ItemServiceTest extends TestCase
         $itemService = (new ItemService());
 
         //Act
-        $item = $itemService->get($items[2]->id);
+        $item = $itemService->show($items[2]->id);
 
         //Assert
         $this->assertEquals($items[2]->id, $item->id);

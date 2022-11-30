@@ -21,6 +21,13 @@ class ItemFactory extends Factory
             'name' => $this->faker->name(),
             'quantity' => $this->faker->randomFloat(2, 0, 3000.00),
             'unit' => $this->faker->randomElement(['l', 'g']),
+            'energy' => $this->faker->randomFloat(2, 0, 3000.00),
+            'total_fat' => $this->faker->randomFloat(2, 0, 3000.00),
+            'saturated_fat' => $this->faker->randomFloat(2, 0, 3000.00),
+            'total_carbohydrates' => $this->faker->randomFloat(2, 0, 3000.00),
+            'sugars' => $this->faker->randomFloat(2, 0, 3000.00),
+            'protein' => $this->faker->randomFloat(2, 0, 3000.00),
+            'salt' => $this->faker->randomFloat(2, 0, 3000.00),
             'catalogue_id' => Catalogue::factory()->create()->id,
         ];
     }

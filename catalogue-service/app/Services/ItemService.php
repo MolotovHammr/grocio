@@ -12,7 +12,7 @@ class ItemService
         return Item::all();
     }
 
-    public function get(Int $id): Item
+    public function show(Int $id): Item
     {
         return Item::findOrFail($id);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreItemRequest;
+use App\Http\Requests\UpdateItemRequest;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Services\ItemService;
@@ -12,21 +13,20 @@ use Illuminate\Http\Response as HttpResponse;
 
 class ItemController extends Controller
 {
-
-    public function index(): Collection
+    public function index(ItemService $itemService): Collection
     {
         try {
-            return Item::all();
+            return $itemService->index();
+
         } catch (\Throwable $th) {
             throw $th;
         }
     }
 
-    public function store(StoreItemRequest $request,ItemService $itemService): HttpResponse
+    public function store(StoreItemRequest $request, ItemService $itemService): HttpResponse
     {
         try {
             $data = $request->validated();
-    
             $item =$itemService->create($data);
     
             return response(
@@ -40,16 +40,13 @@ class ItemController extends Controller
         }
     }
 
-    public function show(Int $itemId): HttpResponse
+    public function show(Int $itemId, ItemService $itemService): HttpResponse
     {
 
         try {
-            $item = Item::query()->findOrFail($itemId);
+            $item = $itemService->show($itemId);
 
-            return response(
-                [
-                    'item' => $item, 
-                ], 200 );
+            return response(['item' => $item], 200 );
 
         } catch (\Throwable $th) {
             throw $th;
@@ -57,18 +54,12 @@ class ItemController extends Controller
 
     }
 
-    public function update(Request $request, Int $itemId): HttpResponse
+    public function update(UpdateItemRequest $request, Int $itemId, ItemService $itemService): HttpResponse
     {
         try {
-            $item = Item::find($itemId);
-
-            $data = $request->validate([
-                'name' => 'required|max:255',
-                'quantity' => 'required|max:255',
-                'unit' => 'required|max:255'
-            ]);
+            $data = $request->validated();
     
-            $item->update($data);
+            $itemService->update($itemId, $data);
     
             return response(
                 [
@@ -81,13 +72,10 @@ class ItemController extends Controller
 
     }
 
-
-    public function delete(Int $itemId): HttpResponse
+    public function delete(Int $itemId, ItemService $itemService): HttpResponse
     {
         try {
-            $item = Item::find($itemId);
-
-            $item->delete();
+            $itemService->delete($itemId);
     
             return response(['message' => 'item succesfully deleted'], 200);
 

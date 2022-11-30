@@ -21,21 +21,33 @@ class ItemTest extends TestCase
             "name" => "Cheese",
             'quantity' => 500.0,
             'unit' => 'g',
+            'energy' => 1000.0,
+            'total_fat' => 500.0,
+            'saturated_fat' => 30.0,
+            'total_carbohydrates' => 20.0,
+            'sugars' => 30.0,
+            'protein' => 15.0,
+            'salt' => 30.0,
             'catalogue_id' => $catalogue->id
         ];
 
         // Act
         $response = $this->json('POST', 'api/items', $itemPayload, ['Accept' => 'application/json']);
-        
-      
         //Assert
         $response->assertStatus(201)
         ->assertJsonStructure([
             "item" => [
-                'id',
                 'name',
                 'quantity',
                 'unit',
+                'energy',
+                'total_fat',
+                'saturated_fat',
+                'total_carbohydrates',
+                'sugars',
+                'protein',
+                'salt',
+                'catalogue_id',
                 'created_at',
                 'updated_at'
             ],
@@ -58,10 +70,17 @@ class ItemTest extends TestCase
         $response->assertStatus(200)
         ->assertJsonStructure([
             "item" => [
-                'id',
                 'name',
                 'quantity',
                 'unit',
+                'energy',
+                'total_fat',
+                'saturated_fat',
+                'total_carbohydrates',
+                'sugars',
+                'protein',
+                'salt',
+                'catalogue_id',
                 'created_at',
                 'updated_at'
             ]
@@ -82,10 +101,17 @@ class ItemTest extends TestCase
         ->assertJsonCount(3)
         ->assertJsonStructure([
             "*" => [
-                'id',
                 'name',
                 'quantity',
                 'unit',
+                'energy',
+                'total_fat',
+                'saturated_fat',
+                'total_carbohydrates',
+                'sugars',
+                'protein',
+                'salt',
+                'catalogue_id',
                 'created_at',
                 'updated_at'
             ]
@@ -101,6 +127,13 @@ class ItemTest extends TestCase
             "name" => "Cheese2",
             'quantity' => 500.0,
             'unit' => 'g',
+            'energy' => 1000.0,
+            'total_fat' => 500.0,
+            'saturated_fat' => 30.0,
+            'total_carbohydrates' => 20.0,
+            'sugars' => 30.0,
+            'protein' => 15.0,
+            'salt' => 30.0,
         ];
 
         //Act
@@ -116,7 +149,7 @@ class ItemTest extends TestCase
 
         $this
         ->assertDatabaseCount('items',1)
-        ->assertDatabaseHas('items', ['name' => 'Cheese2']);
+        ->assertDatabaseHas('items', ['name' => 'Cheese2', 'quantity' => 500.0,  'saturated_fat' => 30.0,]);
     
     }
 

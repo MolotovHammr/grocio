@@ -13,7 +13,14 @@ class Item extends Model
         'name',
         'quantity',
         'unit',
-        'catalogue_id'
+        'energy',
+        'total_fat',
+        'saturated_fat',
+        'total_carbohydrates',
+        'sugars',
+        'protein',
+        'salt',
+        'catalogue_id',
     ];
 
     public function catalogue()
