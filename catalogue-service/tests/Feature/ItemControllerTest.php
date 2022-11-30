@@ -96,24 +96,27 @@ class ItemTest extends TestCase
         $response = $this->json('GET', 'api/items/');
 
         //Assert
+
         $response
         ->assertStatus(200)
-        ->assertJsonCount(3)
+        ->assertJsonCount(1)
         ->assertJsonStructure([
-            "*" => [
-                'name',
-                'quantity',
-                'unit',
-                'energy',
-                'total_fat',
-                'saturated_fat',
-                'total_carbohydrates',
-                'sugars',
-                'protein',
-                'salt',
-                'catalogue_id',
-                'created_at',
-                'updated_at'
+            'items' =>[
+                "*" => [
+                    'name',
+                    'quantity',
+                    'unit',
+                    'energy',
+                    'total_fat',
+                    'saturated_fat',
+                    'total_carbohydrates',
+                    'sugars',
+                    'protein',
+                    'salt',
+                    'catalogue_id',
+                    'created_at',
+                    'updated_at'
+                ]
             ]
         ]);
     }

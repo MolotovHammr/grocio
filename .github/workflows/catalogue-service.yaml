@@ -10,7 +10,7 @@ defaults:
     working-directory: ./catalogue-service
 
 jobs:
-  test:
+  unit-tests & feature test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -34,6 +34,21 @@ jobs:
         run: php artisan key:generate
       - name: Run Larastan Code analysis
         run: vendor/bin/phpstan analyse
+  
+  dockerize:
+    runs-on: ubuntu-latest
+    needs: [ unit-tests & feature test, code-review]
+    steps: 
+      - uses: actions/checkout@v1
+      - name: Create .env file
+        run: echo "${{ secrets.CATALOGUE_SERVICE_ENV_FILE }}" > .env
+      - name: Login into DockerHub
+        run: docker login -u molotovhammr -p "${{ secrets.DOCKER_LOGIN }}"
+      - name: Create image
+        run: docker build . -t molotovhammr/catalogue-service:latest
+      - name: Push image
+        run: docker push molotovhammr/catalogue-service:latest
+
       
 
 
