@@ -10,7 +10,7 @@ defaults:
     working-directory: ./shopping-list-service
 
 jobs:
-  laravel-tests:
+  unit-tests_feature-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -22,4 +22,30 @@ jobs:
         run: php artisan key:generate
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
+  code-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Install Composer Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Generate Key
+        run: php artisan key:generate
+      - name: Run Larastan Code analysis
+        run: vendor/bin/phpstan analyse
+
+  dockerize:
+    runs-on: ubuntu-latest
+    needs: [ unit-tests_feature-tests, code-review]
+    steps: 
+      - uses: actions/checkout@v1
+      - name: Create .env file
+        run: echo "${{ secrets.SHOPPING_LIST_SERVICE_ENV_FILE }}" > .env
+      - name: Login into DockerHub
+        run: docker login -u molotovhammr -p "${{ secrets.DOCKER_LOGIN }}"
+      - name: Create image
+        run: docker build . -t molotovhammr/shopping-list-service:latest
+      - name: Push image
+        run: docker push molotovhammr/shopping-list-service:latest
 
