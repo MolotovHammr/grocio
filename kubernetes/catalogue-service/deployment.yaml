@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogue
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: catalogue
+  template:
+    metadata:
+      labels:
+        app: catalogue
+    spec:
+      containers:
+      - name: catalogue
+        image: molotovhammr/catalogue-service:latest
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 80
