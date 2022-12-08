@@ -16,7 +16,7 @@ class QuickNoteService
     public function update(array $requestData, int $id)
     {
         $quickNote = QuickNote::findOrFail($id);
-        $quickNote::update($requestData);
+        $quickNote->update($requestData);
 
         return $quickNote;
     }

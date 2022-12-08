@@ -41,10 +41,10 @@ class ActiveItemController extends Controller
         }
     }
 
-    public function remove(Request $request, ActiveItemService $activeItemService)
+    public function remove(int $id, ActiveItemService $activeItemService)
     {
         try {
-            //code...
+            $activeItemService->remove($id);
         } catch (\Throwable $th) {
             throw $th;
         }

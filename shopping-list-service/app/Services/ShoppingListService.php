@@ -26,7 +26,7 @@ class ShoppingListService
     public function delete(int $id)
     {
         $shoppingList = ShoppingList::findOrFail($id);
-        return $shoppingList->delete($shoppingList);
+        return $shoppingList->delete();
     }
 
 }
