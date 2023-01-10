@@ -17,6 +17,7 @@ class CatalogueController extends Controller
 
             return response(
                 [
+                    \
                     'catalogue' => $catalogue,
                     'message' => 'Catalogue succesfully created' 
                 ], 201 );
