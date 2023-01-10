@@ -23,6 +23,6 @@ jobs:
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 grocio-cluster     
     - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f ${{ github.workspace }}/kubernetes/catalogue-service/deployment.yaml
+      run: kubectl apply -f ${{ github.workspace }}/kubernetes/catalogue-service/deployment.yaml  
     - name: Verify deployments
       run: kubectl rollout status deployment/catalogue
