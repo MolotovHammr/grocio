@@ -29,7 +29,7 @@ jobs:
     - name: ls
       run: ls ${{ github.workspace }}
     - name: cd
-      run: cd ${{ github.workspace }}/kubernetes
+      run: cd ${{ github.workspace }}/kubernetes/catalogue-service
     - name: ls
       run: ls
     - name: Deploy to DigitalOcean Kubernetes
