@@ -11,7 +11,7 @@ on:
 
 defaults:
   run:
-    working-directory: /kubernetes
+    working-directory: ./kubernetes
 
 jobs:
   deploy:
@@ -27,13 +27,9 @@ jobs:
     - name: Save DigitalOcean kubeconfig with short-lived credentials
       run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 grocio
     - name: ls
-      run: ls 
-    - name: cd
-      run: cd ./catalogue-service
-    - name: ls
-      run: ls 
+      run: ls ${{ github.workspace }}
     - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl apply -f deployment.yml
+      run: kubectl apply -f ./catalogue-service/deployment.yml
 
     - name: Verify deployment
       run: kubectl rollout status deployment/catalogue
