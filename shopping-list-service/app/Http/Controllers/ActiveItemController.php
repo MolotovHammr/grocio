@@ -10,7 +10,7 @@ class ActiveItemController extends Controller
     public function create(Request $request, ActiveItemService $activeItemService)
     {
         try {
-            $data = $request->validate();
+            $data = $request->validated();
             $activeItem = $activeItemService->create($data);
 
             return response(

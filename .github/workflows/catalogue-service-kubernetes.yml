@@ -1,0 +1,28 @@
+name: kubernetes catalogue-service
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - './kubernetes/catalogue-service/deployment'
+
+jobs:
+  deploy:
+    name: Deploy to Kubernetes
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout master
+      uses: actions/checkout@main
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    - name: Save DigitalOcean kubeconfig with short-lived credentials
+      run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 grocio
+
+    - name: Deploy to DigitalOcean Kubernetes
+      run: kubectl apply -f $GITHUB_WORKSPACE/kubernetes/catalogue-service/deployment.yml
+
+    - name: Verify deployment
+      run: kubectl rollout status deployment/catalogue

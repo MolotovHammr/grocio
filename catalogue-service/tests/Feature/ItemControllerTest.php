@@ -7,7 +7,7 @@ use App\Models\Item;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ItemTest extends TestCase
+class ItemControllerTest extends TestCase
 {
 
     use RefreshDatabase;

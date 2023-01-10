@@ -16,7 +16,7 @@ spec:
       - name: catalogue
         image: molotovhammr/catalogue-service:latest
         resources:
-          limits:
+          requests:
             memory: "512Mi"
             cpu: "50m"
         ports:

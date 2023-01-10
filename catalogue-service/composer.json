@@ -16,6 +16,7 @@
         "vladimir-yuldashev/laravel-queue-rabbitmq": "^13.0"
     },
     "require-dev": {
+        "enlightn/security-checker": "^1.10",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
