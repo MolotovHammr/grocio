@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - './kubernetes/catalogue-service/deployment.yml'
+      - './kubernetes/catalogue-service/deployment.yaml'
       - './catalogue-service/**'
       - '.github/workflows/**'
 
