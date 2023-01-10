@@ -1,4 +1,4 @@
-name: kubernetes catalogue-service
+name: kubernetes-catalogue-service
 
 on:
   push:
