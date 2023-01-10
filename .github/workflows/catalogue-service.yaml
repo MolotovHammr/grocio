@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - ./catalogue-service
+      - './catalogue-service/**'
+      - '.github/workflows/**'
 
 defaults:
   run:
