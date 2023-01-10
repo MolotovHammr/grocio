@@ -15,10 +15,10 @@ spec:
       containers:
       - name: catalogue
         image: molotovhammr/catalogue-service:latest
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "50m"
+        # resources:
+        #   requests:
+        #     memory: "256Mi"
+        #     cpu: "50m"
         #   limits:
         #     memory: "256Mi"
         #     cpu: "500m"
