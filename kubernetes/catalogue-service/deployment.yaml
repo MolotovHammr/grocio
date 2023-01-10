@@ -17,7 +17,7 @@ spec:
         image: molotovhammr/catalogue-service:latest
         resources:
           requests:
-            memory: "512Mi"
+            memory: "128Mi"
             cpu: "50m"
         ports:
         - containerPort: 80
