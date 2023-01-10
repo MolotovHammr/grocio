@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - './kubernetes/catalogue-service/deployment'
-      - './catalogue-service'
+      - ./kubernetes/catalogue-service/deployment
+      - ./catalogue-service
 
 jobs:
   deploy:
