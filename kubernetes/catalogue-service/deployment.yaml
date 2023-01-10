@@ -17,8 +17,8 @@ spec:
         image: molotovhammr/catalogue-service:latest
         resources:
           requests:
-            memory: "256Mi"
-            cpu: "0.5"
+            memory: "100Mi"
+            cpu: "0.05"
         #   limits:
         #     memory: "256Mi"
         #     cpu: "500m"
