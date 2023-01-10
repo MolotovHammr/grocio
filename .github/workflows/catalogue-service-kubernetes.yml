@@ -9,10 +9,6 @@ on:
       - './catalogue-service/**'
       - '.github/workflows/**'
 
-defaults:
-  run:
-    working-directory: ./kubernetes
-
 jobs:
   deploy:
     name: Deploy to Kubernetes
