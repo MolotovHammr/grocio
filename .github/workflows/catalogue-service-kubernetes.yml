@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - './kubernetes/catalogue-service/deployment'
-      - './catalogeu-service'
+      - './catalogue-service'
 
 jobs:
   deploy:
