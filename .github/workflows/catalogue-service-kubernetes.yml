@@ -30,6 +30,8 @@ jobs:
       run: ls ${{ github.workspace }}
     - name: cd
       run: cd ./catalogue-service
+    - name: ls
+      run: ls 
     - name: Deploy to DigitalOcean Kubernetes
       run: kubectl apply -f deployment.yml
 
