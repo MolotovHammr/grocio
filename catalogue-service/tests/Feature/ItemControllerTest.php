@@ -30,6 +30,8 @@ class ItemControllerTest extends TestCase
             'salt' => 30.0,
             'catalogue_id' => $catalogue->id
         ];
+        
+        $jsonPayload = json_decode('{ "name": "Cheese", "quantity": 500.0, "unit": "g", "energy": 1000.0, "total_fat": 500.0, "saturated_fat": 30.0, "total_carbohydrates": 20.0, "sugars": 30.0, "protein": 15.0, "salt": 30.0, "catalogue_id": 1 }', true );
 
         // Act
         $response = $this->json('POST', 'api/items', $itemPayload, ['Accept' => 'application/json']);
