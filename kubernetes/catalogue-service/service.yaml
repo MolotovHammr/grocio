@@ -4,7 +4,6 @@ metadata:
   name: catalogue
 spec:
   type: LoadBalancer
-
   selector:
     app: catalogue
   ports:
