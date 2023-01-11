@@ -16,7 +16,7 @@ class StoreItemRequest extends FormRequest
         return true;
     }
 
-    /**
+    /**[p;p]lo,\][=l,./ ]
      * Get the validation rules that apply to the request.
      *
      * @return array<string, mixed>

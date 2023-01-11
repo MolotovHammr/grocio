@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Services\ItemService;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Response as HttpResponse;
 
 
@@ -61,6 +60,7 @@ class ItemController extends Controller
     {
         try {
             $data = $request->validated();
+            dd('Here');
             $item =$itemService->create($data);
     
             return response(

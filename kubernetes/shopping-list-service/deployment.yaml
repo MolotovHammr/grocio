@@ -15,6 +15,7 @@ spec:
       containers:
       - name: shopping-list
         image: molotovhammr/shopping-list-service:latest
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "100Mi"
