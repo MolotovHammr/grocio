@@ -19,6 +19,7 @@ class CatalogueFactory extends Factory
         return [
             'name' => $this->faker->company(),
             'description' => $this->faker->text(15),
+            'group_id' => $this->faker->numberBetween(1, 1000),
         ];
     }
 }
