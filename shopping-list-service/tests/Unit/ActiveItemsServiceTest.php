@@ -55,6 +55,8 @@ class ActiveItemsServiceTest extends TestCase
     {
         //Arrange
         $activeItem = ActiveItem::factory()->create();
+        $activeItem->amount = 4;
+        $activeItem->save();
         $activeItemService = (new ActiveItemService());
 
         $amount = $activeItem->amount - 1;
