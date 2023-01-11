@@ -15,8 +15,7 @@ class ShoppingList extends Model
         'group_id'
     ];
 
-    public function items()
-    {
-        return $this->hasMany(Item::class)->using(ActiveItem::class);
-    }
+   public function activeItem(){
+         return $this->hasMany(ActiveItem::class);
+   }
 }

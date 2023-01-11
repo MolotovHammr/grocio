@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreQuickNoteRequest;
+use App\Http\Requests\UpdateQuickNoteRequest;
 use App\Services\QuickNoteService;
 use Illuminate\Http\Request;
 
 class QuickNoteController extends Controller
 {
-    public function create(Request $request, QuickNoteService $quickNoteService)
+    public function create(StoreQuickNoteRequest $request, QuickNoteService $quickNoteService)
     {
         try {
             $data  = $request->validated();
@@ -22,7 +24,7 @@ class QuickNoteController extends Controller
         }
     }
 
-    public function update(Request $request,  QuickNoteService $quickNoteService)
+    public function update(UpdateQuickNoteRequest $request,  QuickNoteService $quickNoteService)
     {
         try {
             $data  = $request->validated();
