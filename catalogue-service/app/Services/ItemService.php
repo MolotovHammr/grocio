@@ -12,6 +12,16 @@ class ItemService
         return Item::all();
     }
 
+    public function indexByCatalogueId(Int $catalogueId): Collection
+    {
+        return Item::where('catalogue_id', $catalogueId)->get();
+    }
+
+    public function indexByGroupId(Int $groupId): Collection
+    {
+        return Item::where('group_id', $groupId)->get();
+    }
+
     public function show(Int $id): Item
     {
         return Item::findOrFail($id);

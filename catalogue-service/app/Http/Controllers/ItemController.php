@@ -27,6 +27,36 @@ class ItemController extends Controller
         }
     }
 
+    public function indexByCatalogueId(ItemService $itemService, Int $catalogueId)
+    {
+        try {
+            $items = $itemService->indexByCatalogueId($catalogueId);
+
+            return response(
+                [
+                    'items' => $items,
+                ], 200);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
+    public function indexByGroupId(ItemService $itemService, Int $groupId)
+    {
+        try {
+            $items = $itemService->indexByGroupId($groupId);
+
+            return response(
+                [
+                    'items' => $items,
+                ], 200);
+
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     public function store(StoreItemRequest $request, ItemService $itemService): HttpResponse
     {
         try {

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreActiveItem;
 use App\Services\ActiveItemService;
 use Illuminate\Http\Request;
 
 class ActiveItemController extends Controller
 {
-    public function create(Request $request, ActiveItemService $activeItemService)
+    public function create(StoreActiveItem $request, ActiveItemService $activeItemService)
     {
         try {
             $data = $request->validated();

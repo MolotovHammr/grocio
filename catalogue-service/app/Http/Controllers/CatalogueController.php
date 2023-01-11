@@ -16,8 +16,7 @@ class CatalogueController extends Controller
             $catalogue =$catalogueService->create($data);
 
             return response(
-                [
-                    
+                [  
                     'catalogue' => $catalogue,
                     'message' => 'Catalogue succesfully created' 
                 ], 201 );
@@ -25,6 +24,8 @@ class CatalogueController extends Controller
             throw $th;
         }
     }
+
+    
 
     public function show(Int $catalogueId, CatalogueService $catalogueService): HttpResponse
     {

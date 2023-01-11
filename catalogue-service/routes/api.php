@@ -25,6 +25,7 @@ Route::get('/health', function (){
 });
 Route::post('/items', [ItemController::class, 'store']);
 Route::get('/items', [ItemController::class, 'index']);
+Route::get('/items/catalogues/{catalogueId}', [ItemController::class, 'indexByCatalogueId']);   
 Route::get('/items/{itemId}', [ItemController::class, 'show']);
 Route::put('items/{itemId}', [ItemController::class, 'update']);
 Route::delete('/items/{id}', [ItemController::class, 'delete']);  

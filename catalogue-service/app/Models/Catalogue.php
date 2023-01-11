@@ -12,7 +12,8 @@ class Catalogue extends Model
 
     protected $fillable =[
         'name',
-        'description'
+        'description',
+        'group_id'
     ];
 
     /**
