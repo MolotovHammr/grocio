@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - './catalogue-service/**' 
-      - '.github/workflows/**'  
+      - '.github/workflows/**'    
       - './kubernetes/catalogue-service/**'
 
 defaults:
