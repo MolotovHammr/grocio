@@ -1,10 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: shopping-list
+  name: shopping-list-service
 spec:
   type: LoadBalancer
-
   selector:
     app: shopping-list
   ports:

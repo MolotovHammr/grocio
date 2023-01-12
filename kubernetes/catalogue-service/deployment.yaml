@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: catalogue
 spec:
-  replicas: 2
+  replicas: 8
   selector:
     matchLabels:
       app: catalogue
@@ -17,11 +17,11 @@ spec:
         image: molotovhammr/catalogue-service:latest
         imagePullPolicy: Always
         resources:
-          requests:
-            memory: "100Mi"
-            cpu: "0.05"
-        #   limits:
-        #     memory: "256Mi"
-        #     cpu: "500m"
+        #   requests:
+        #     memory: "100Mi"
+        #     cpu: "0.05"
+          # limits:
+          #   memory: "256Mi"
+          #   cpu: "0.1"
         ports:
         - containerPort: 80
