@@ -60,7 +60,6 @@ class ItemController extends Controller
     {
         try {
             $data = $request->validated();
-            dd('Here');
             $item =$itemService->create($data);
     
             return response(
