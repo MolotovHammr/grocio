@@ -39,7 +39,7 @@ jobs:
         run: php artisan key:generate
       - name: Run Larastan Code analysis
         run: vendor/bin/phpstan analyse
-
+ 
   Dependency-security-tests-review:
     runs-on: ubuntu-latest
     steps:
