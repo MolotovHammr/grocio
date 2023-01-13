@@ -59,7 +59,7 @@
     </div>
     <div>
         <label for="price">Price (&euro;)</label>
-        <input step="0.01"  name="salt" type="number">
+        <input step="0.01"  name="price" type="number">
     </div>
     <input name="catalogueId" type="hidden" value="{$page.params.catalogueId}">
     <button formaction="?/create">Create</button>

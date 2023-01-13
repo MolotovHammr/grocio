@@ -14,9 +14,9 @@ export const actions = {
         const sugars = formData.get('sugars')
         const protein = formData.get('protein')
         const salt = formData.get('salt')
+        const price = formData.get('price')
         const catalogue_id = formData.get('catalogueId')
-        console.log(catalogue_id, name, quantity, unit, energy, total_fat, saturated_fat, total_carbohydrates, sugars, protein, salt)
-        console.log(`/${SECRET_CATALOGUE_SERVICE_URL}/api/catalogues/${catalogue_id}/items`)
+
         console.log(JSON.stringify({
             name,
             quantity,
@@ -28,6 +28,7 @@ export const actions = {
             sugars,
             protein,
             salt,
+            price,
             catalogue_id
         }))
 
@@ -49,6 +50,7 @@ export const actions = {
                 sugars,
                 protein,
                 salt,
+                price,
                 catalogue_id
             })
         })
