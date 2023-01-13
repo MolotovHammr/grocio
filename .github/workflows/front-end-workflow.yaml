@@ -19,13 +19,12 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: ls
-        run: ls   
+      - name: Install Vite
+        run: npm i -g vite  
       - name: Build front-end
         run: npm run build
 
