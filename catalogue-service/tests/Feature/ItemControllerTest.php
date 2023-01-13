@@ -28,6 +28,7 @@ class ItemControllerTest extends TestCase
             'sugars' => 30.0,
             'protein' => 15.0,
             'salt' => 30.0,
+            'price' => 30.0,
             'catalogue_id' => $catalogue->id
         ];
         
@@ -49,6 +50,7 @@ class ItemControllerTest extends TestCase
                 'sugars',
                 'protein',
                 'salt',
+                'price',
                 'catalogue_id',
                 'created_at',
                 'updated_at'
@@ -82,6 +84,7 @@ class ItemControllerTest extends TestCase
                 'sugars',
                 'protein',
                 'salt',
+                'price',
                 'catalogue_id',
                 'created_at',
                 'updated_at'
@@ -115,6 +118,7 @@ class ItemControllerTest extends TestCase
                     'sugars',
                     'protein',
                     'salt',
+                    'price',
                     'catalogue_id',
                     'created_at',
                     'updated_at'
@@ -139,6 +143,8 @@ class ItemControllerTest extends TestCase
             'sugars' => 30.0,
             'protein' => 15.0,
             'salt' => 30.0,
+            'price' => 45.0,
+
         ];
 
         //Act

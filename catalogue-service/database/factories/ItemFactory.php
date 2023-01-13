@@ -28,6 +28,7 @@ class ItemFactory extends Factory
             'sugars' => $this->faker->randomFloat(2, 0, 3000.00),
             'protein' => $this->faker->randomFloat(2, 0, 3000.00),
             'salt' => $this->faker->randomFloat(2, 0, 3000.00),
+            "price" => $this->faker->randomFloat(2, 0, 3000.00),
             'catalogue_id' => Catalogue::factory()->create()->id,
         ];
     }
