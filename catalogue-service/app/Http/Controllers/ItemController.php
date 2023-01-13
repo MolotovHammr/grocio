@@ -60,7 +60,7 @@ class ItemController extends Controller
         }
     }
 
-    public function show(Int $itemId, ItemService $itemService): HttpResponse
+    public function show(Catalogue $catalogue, Int $itemId, ItemService $itemService): HttpResponse
     {
         try {
             $item = $itemService->show($itemId);
