@@ -3,6 +3,7 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/do-loadbalancer-size-unit: "3"
+    service.beta.kubernetes.io/do-loadbalancer-name: "front-end"
   name: front-end-service
 spec:
   type: LoadBalancer

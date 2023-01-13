@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: shopping-list-service
 spec:
-  type: LoadBalancer
   selector:
     app: shopping-list
   ports:
