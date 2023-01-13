@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: shopping-list
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: shopping-list
@@ -16,10 +16,10 @@ spec:
       - name: shopping-list
         image: molotovhammr/shopping-list-service:latest
         imagePullPolicy: Always
-        resources:
-          requests:
-            memory: "100Mi"
-            cpu: "0.05"
+        # resources:
+        #   requests:
+        #     memory: "100Mi"
+        #     cpu: "0.05"
         #   limits:
         #     memory: "256Mi"
         #     cpu: "500m"

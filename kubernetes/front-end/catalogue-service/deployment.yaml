@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-end
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: front-end
+  template:
+    metadata:
+      labels:
+        app: front-end
+    spec:
+      containers:
+      - name: front-end
+        image: molotovhammr/front-end:latest
+        imagePullPolicy: Always
+        resources:
+        #   requests:
+        #     memory: "100Mi"
+        #     cpu: "0.05"
+          # limits:
+          #   memory: "256Mi"
+          #   cpu: "0.1"
+        ports:
+        - containerPort: 3000

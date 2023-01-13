@@ -12,9 +12,9 @@ class ShoppingListService
         return ShoppingList::create($shoppingListData);
     }
 
-    public function get(int $id): ShoppingList
+    public function show(int $id): ShoppingList
     {
-        return ShoppingList::findOrFail($id);
+        return ShoppingList::findOrFail($id)->load('activeItems');
     }
 
     public function update(int $id, array $newShoppingList)

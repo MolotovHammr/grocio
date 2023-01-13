@@ -9,7 +9,7 @@
          */
     export let data;
     console.log(form)
-    </script>
+</script>
     
     <h1>Register</h1>
     <form method="POST" action="?/register">

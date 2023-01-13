@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\ActiveItemExists;
 use App\Models\ActiveItem;
 use App\Models\Item;
 use App\Models\ShoppingList;
@@ -9,19 +10,27 @@ use Carbon\Carbon;
 
 class ActiveItemService
 {
-    public function create(Array $request)
+    public function addActiveItem(Array $request)
     {
+        if(ActiveItem::where('shopping_list_id', $request['shopping_list_id'])->where('item_id', $request['item_id'])->exists())
+        {
+            throw new ActiveItemExists('Active item already exists');
+        }
+
+
         $activeItem = new ActiveItem([
+            'item_id' => $request['item_id'],
+            'shopping_list_id' => $request['shopping_list_id'],
             'added_at' => Carbon::now(),
             'amount' => $request['amount']
         ]);
 
-        $shoppingList = ShoppingList::findOrFail($request['shopping_list_id']);
-        $item = Item::findOrFail($request['item_id']);
+        // $shoppingList = ShoppingList::findOrFail($request['shopping_list_id']);
+        // $item = Item::findOrFail($request['item_id']);
 
-        $activeItem->shoppingList()->associate($shoppingList);
+        // $activeItem->shoppingList()->associate($shoppingList);
 
-        $activeItem->item()->associate($item);
+        // $activeItem->item()->associate($item);
         $activeItem->save();
 
         return $activeItem;

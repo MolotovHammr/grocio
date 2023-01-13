@@ -88,7 +88,6 @@ class ItemController extends Controller
         } catch (\Throwable $th) {
             throw $th;
         }
-
     }
 
     public function delete(Int $itemId, ItemService $itemService): HttpResponse

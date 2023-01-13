@@ -12,6 +12,8 @@ class ActiveItem extends Pivot
     protected $table = 'active_items';
 
     public $fillable = [
+        'shopping_list_id',
+        'item_id',
         'added_at',
         'bougth_at',
         'amount'

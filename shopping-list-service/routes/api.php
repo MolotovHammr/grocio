@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShoppingListController;
+use App\Http\Controllers\ActiveItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/health', function (Request $request){
     return 'Healthy Shopping List Service!';
 });
+
+Route::post('/shopping-lists', [ShoppingListController::class, 'create']);
+Route::get('/shopping-lists/{id}', [ShoppingListController::class, 'show']);
+Route::post('/shopping-lists/{id}/active-items', [ActiveItemController::class, 'addActiveItem']);
+

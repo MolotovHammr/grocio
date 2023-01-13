@@ -34,6 +34,7 @@ class StoreItemRequest extends FormRequest
             'sugars' => ['required', 'numeric', 'min:0.01', 'max:10000.0'],
             'protein' => ['required', 'numeric', 'min:0.01', 'max:10000.0'],
             'salt' => ['required', 'numeric', 'min:0.01', 'max:10000.0'],
+            'price' => ['required', 'numeric', 'min:0.01', 'max:10000.0'],
             'catalogue_id' => ['required', 'exists:App\Models\Catalogue,id']
         ];
     }

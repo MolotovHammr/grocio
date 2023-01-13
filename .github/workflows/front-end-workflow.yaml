@@ -1,0 +1,56 @@
+name: front-end service
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'front-end/**' 
+      - '.github/workflows/**'
+      - 'kubernetes/shopping-list-service/**'
+
+defaults:
+  run:
+    working-directory: ./front-end  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build front-end
+        run: npm run build
+
+  dockerize:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps: 
+      - uses: actions/checkout@v1
+      - name: Create .env file
+        run: echo "${{ secrets.CATALOGUE_SERVICE_ENV_FILE }}" > .env
+      - name: Login into DockerHub
+        run: docker login -u molotovhammr -p "${{ secrets.DOCKER_LOGIN }}"
+      - name: Create image
+        run: docker build . -t molotovhammr/front-end:latest
+      - name: Push image
+        run: docker push molotovhammr/front-end:latest
+
+  deploy:
+    name: Deploy to Kubernetes
+    runs-on: ubuntu-latest
+    needs: [dockerize]
+    steps:
+    - name: Checkout master 
+      uses: actions/checkout@v2
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    - name: Save DigitalOcean kubeconfig with short-lived credentials
+      run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 grocio-cluster     
+    - name: Deploy to DigitalOcean Kubernetes
+      run: kubectl apply -f ${{ github.workspace }}/kubernetes/front-end/   
+    - name: Update image of pods
+      run: kubectl rollout restart deployment/front-end
+    - name: Verify deployments
+      run: kubectl rollout status deployment/front-end  

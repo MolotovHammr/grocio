@@ -8,17 +8,18 @@ use Illuminate\Http\Request;
 
 class ActiveItemController extends Controller
 {
-    public function create(StoreActiveItem $request, ActiveItemService $activeItemService)
+    public function addActiveItem(StoreActiveItem $request, ActiveItemService $activeItemService)
     {
         try {
             $data = $request->validated();
-            $activeItem = $activeItemService->create($data);
+            $activeItem = $activeItemService->addActiveItem($data);
 
             return response(
                 [
                     'activeItem' => $activeItem, 
                     'message' => 'Active item succesfully added' 
                 ], 201 );
+                
         } catch (\Throwable $th) {
             throw $th;
         }
