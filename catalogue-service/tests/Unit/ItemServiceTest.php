@@ -31,6 +31,7 @@ class ItemServiceTest extends TestCase
             'sugars' => 30.0,
             'protein' => 15.0,
             'salt' => 30.0,
+            'price' => 30.0,
             'catalogue_id' => $catalogue_id,
         ];
 

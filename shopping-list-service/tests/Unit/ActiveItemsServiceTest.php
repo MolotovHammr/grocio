@@ -25,7 +25,7 @@ class ActiveItemsServiceTest extends TestCase
         $activeItemService = (new ActiveItemService());
 
         //Act 
-        $activeItem = $activeItemService->create($arr);
+        $activeItem = $activeItemService->addActiveItem($arr);
 
         //Assert
         $this->assertEquals($shoppingList->id, $activeItem->shoppingList->id);

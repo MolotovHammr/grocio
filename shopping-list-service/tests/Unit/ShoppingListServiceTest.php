@@ -40,7 +40,7 @@ class ShoppingListServiceTest extends TestCase
         $shoppingLists = ShoppingList::factory()->count(5)->create();
 
         //Act
-        $shoppingList = $shoppingListService->get($shoppingLists[4]->id);
+        $shoppingList = $shoppingListService->show($shoppingLists[4]->id);
 
         //Assert
         $this->assertEquals($shoppingLists[4]->id, $shoppingList->id);
