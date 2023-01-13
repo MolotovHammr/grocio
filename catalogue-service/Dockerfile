@@ -21,8 +21,7 @@ COPY . .
 RUN composer install --no-interaction --optimize-autoloader --no-dev
 # Optimizing Configuration loading
 RUN php artisan config:cache
-#Migrate database
-RUN php artisan migrate
+
 # Optimizing Route loading
 RUN php artisan route:cache
 # Optimizing View loading
