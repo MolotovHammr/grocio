@@ -23,6 +23,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
+      - name: Create .env file
+        run: echo "${{ secrets.CATALOGUE_SERVICE_ENV_FILE }}" > .env
       - name: Node install
         run: npm install
       - name: Build front-end
