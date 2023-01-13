@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 16
       - name: Create .env file
-        run: echo "${{ secrets.CATALOGUE_SERVICE_ENV_FILE }}" > .env
+        run: echo "${{ secrets.FRONT_END_ENV_FILE }}" > .env
       - name: Node install
         run: npm install
       - name: Build front-end
@@ -36,7 +36,7 @@ jobs:
     steps: 
       - uses: actions/checkout@v1
       - name: Create .env file
-        run: echo "${{ secrets.CATALOGUE_SERVICE_ENV_FILE }}" > .env
+        run: echo "${{ secrets.FRONT_END_ENV_FILE }}" > .env
       - name: Login into DockerHub
         run: docker login -u molotovhammr -p "${{ secrets.DOCKER_LOGIN }}"
       - name: Create image
