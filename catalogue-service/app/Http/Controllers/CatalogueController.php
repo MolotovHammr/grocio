@@ -11,6 +11,7 @@ class CatalogueController extends Controller
 {
     public function store(StoreCatalogueRequest $request, CatalogueService $catalogueService): HttpResponse
     {
+        //Test
         try {
             $data = $request->validated();
             $catalogue =$catalogueService->create($data);

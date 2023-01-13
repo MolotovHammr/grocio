@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - './shopping-list-service/**' 
+      - 'shopping-list-service/**' 
       - '.github/workflows/**'
-      - './kubernetes/shopping-list-service/**'
+      - 'kubernetes/shopping-list-service/**'
 
 defaults:
   run:

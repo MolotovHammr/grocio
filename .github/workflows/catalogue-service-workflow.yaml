@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - './catalogue-service/**' 
+      - 'catalogue-service/**' 
       - '.github/workflows/**'    
-      - './kubernetes/catalogue-service/**'
+      - 'kubernetes/catalogue-service/**'
 
 defaults:
   run:
