@@ -23,12 +23,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/health', function (){
     return 'Healthyy';
 });
-Route::post('/items', [ItemController::class, 'store']);
-Route::get('/items', [ItemController::class, 'index']);
-Route::get('/items/catalogues/{catalogueId}', [ItemController::class, 'indexByCatalogueId']);   
-Route::get('/items/{itemId}', [ItemController::class, 'show']);
-Route::put('items/{itemId}', [ItemController::class, 'update']);
-Route::delete('/items/{id}', [ItemController::class, 'delete']);  
+// Route::post('/items', [ItemController::class, 'store']);
+// Route::get('/items/{itemId}', [ItemController::class, 'show']);
+// Route::put('items/{itemId}', [ItemController::class, 'update']);
+// Route::delete('/items/{id}', [ItemController::class, 'delete']);  
 
 Route::post('/catalogues', [CatalogueController::class, 'store']);
 Route::get('/catalogues/{catalogueId}', [CatalogueController::class, 'show']);
+Route::get('/catalogues/{catalogue}/items', [ItemController::class, 'indexByCatalogueId']);
+Route::post('/catalogues/{catalogue}/items', [ItemController::class, 'store']);
+Route::put('/catalogues/{catalogue}/items/{itemId}', [ItemController::class, 'update']);
+Route::get('/catalogues/{catalogue}/items/{itemId}', [ItemController::class, 'show']);
+Route::delete('/catalogues/{catalogueId}/items/{itemId}', [ItemController::class, 'delete']);
+
+
+

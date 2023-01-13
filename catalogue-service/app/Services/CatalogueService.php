@@ -8,7 +8,7 @@ class CatalogueService{
     
     public function show(Int $id): Catalogue
     {
-        return Catalogue::findOrFail($id);
+        return Catalogue::findOrFail($id)->load('items');
     }
 
     public function create(Array $itemData): Catalogue

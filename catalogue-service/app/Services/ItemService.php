@@ -29,7 +29,7 @@ class ItemService
 
     public function create(Array $itemData): Item
     {
-       return Item::create($itemData);
+        return Item::create($itemData);
     }
 
     public function update(Int $itemId, Array $newItemData)

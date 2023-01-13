@@ -31,7 +31,6 @@ class CatalogueController extends Controller
     {
         try {
             $catalogue = $catalogueService->show($catalogueId);
-
             return response(['catalogue' => $catalogue], 200 );
         } catch (\Throwable $th) {
             throw $th;
