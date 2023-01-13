@@ -23,8 +23,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16
-      - name: Install Vite
-        run: npm i -g vite  
+      - name: Node install
+        run: npm install
       - name: Build front-end
         run: npm run build
 
