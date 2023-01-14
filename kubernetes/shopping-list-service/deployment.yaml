@@ -28,4 +28,4 @@ spec:
         lifecycle:
             postStart:
               exec:
-                command: ["/bin/sh", "-c", "php artisan queue:work --tries=3 --timeout=90 --sleep=3 --daemon"]
+                command: ["/bin/sh", "-c", "nohup php artisan queue:work --daemon &"]
