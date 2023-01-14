@@ -27,5 +27,3 @@ RUN php artisan route:cache
 RUN php artisan view:cache
 
 RUN chown -R application:application .
-
-RUN nohup php artisan queue:work --daemon &
