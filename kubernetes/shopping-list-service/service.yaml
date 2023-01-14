@@ -5,7 +5,7 @@ metadata:
     service.beta.kubernetes.io/do-loadbalancer-name: "shopping-list-service"
   name: shopping-list-service
 spec:
-  # type: LoadBalancer
+  type: LoadBalancer
   selector:
     app: shopping-list
   ports:
