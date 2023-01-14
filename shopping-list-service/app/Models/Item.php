@@ -14,7 +14,9 @@ class Item extends Model
     'name',
     'quantity',
     'unit',
-    'price'
+    'price',
+    'catalogue_item_id',
+    'shopping_list_id',
    ];
 
    public function shoppingList()
