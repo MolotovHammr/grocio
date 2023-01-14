@@ -28,4 +28,4 @@ RUN php artisan view:cache
 
 RUN chown -R application:application .
 
-RUN php artisan queue:work
+RUN nohup php artisan queue:work --daemon &
