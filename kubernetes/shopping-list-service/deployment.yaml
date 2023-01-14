@@ -15,7 +15,6 @@ spec:
       containers:
       - name: shopping-list
         image: molotovhammr/shopping-list-service:latest
-        # command: [ "bin/bash", "-c", "php artisan queue:work" ]
         imagePullPolicy: Always
         # resources:
         #   requests:
@@ -26,3 +25,7 @@ spec:
         #     cpu: "500m"
         ports:
         - containerPort: 80
+        lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "php artisan queue:work --tries=3 --timeout=90 --sleep=3 --daemon"]
