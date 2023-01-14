@@ -14,7 +14,7 @@ class ShoppingListService
 
     public function show(int $id): ShoppingList
     {
-        return ShoppingList::findOrFail($id)->load('activeItems');
+        return ShoppingList::findOrFail($id)->load('activeItems')->load('activeItems.item');
     }
 
     public function update(int $id, array $newShoppingList)

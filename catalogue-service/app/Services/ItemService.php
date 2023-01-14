@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\ItemCreated;
 use App\Models\Item;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -29,6 +30,15 @@ class ItemService
 
     public function create(Array $itemData): Item
     {
+        $item = Item::create($itemData);
+        ItemCreated::dispatch([
+            'id' => $item->id,
+            'name' => $item->name,
+            'quantity' => $item->quantity,
+            'unit' => $item->unit,
+            'price' => $item->price,
+            'catalogue_id' => $item->catalogue_id,
+        ]);
         return Item::create($itemData);
     }
 

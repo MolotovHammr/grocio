@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CatalogueController;
 use App\Http\Controllers\ItemController;
+use App\Jobs\PingJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/health', function (){
-    return 'Healthyy';
+    return 'Healthy catalogue-service';
 });
 Route::post('/items', [ItemController::class, 'store']);
 Route::get('/items', [ItemController::class, 'index']);
@@ -40,3 +41,8 @@ Route::post('/catalogues/{catalogue}/items', [ItemController::class, 'store']);
 Route::put('/catalogues/{catalogue}/items/{itemId}', [ItemController::class, 'update']);
 Route::get('/catalogues/{catalogue}/items/{itemId}', [ItemController::class, 'show']);
 Route::delete('/catalogues/{catalogueId}/items/{itemId}', [ItemController::class, 'delete']);
+
+Route::get('/ping', function (){
+    PingJob::dispatch();
+
+});

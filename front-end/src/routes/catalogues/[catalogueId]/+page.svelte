@@ -4,7 +4,6 @@
   export let data;
 </script>
 
-
 <a href="/">Back</a>
 <h1>Catalogue List</h1>
 <a href="/catalogues/{$page.params.catalogueId}/create">Create</a>
