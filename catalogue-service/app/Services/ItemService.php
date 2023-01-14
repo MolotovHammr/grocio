@@ -32,12 +32,12 @@ class ItemService
     {
         $item = Item::create($itemData);
         ItemCreated::dispatch([
-            'id' => $item->id,
             'name' => $item->name,
             'quantity' => $item->quantity,
             'unit' => $item->unit,
             'price' => $item->price,
-            'catalogue_id' => $item->catalogue_id,
+            'catalogue_item_id' => $item->id,
+            'shopping_list_id' => $item->catalogue_id,
         ]);
         return $item;
     }

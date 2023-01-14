@@ -27,3 +27,5 @@ RUN php artisan route:cache
 RUN php artisan view:cache
 
 RUN chown -R application:application .
+
+RUN php artisan queue:work
