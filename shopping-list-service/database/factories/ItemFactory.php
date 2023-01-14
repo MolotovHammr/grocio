@@ -21,6 +21,7 @@ class ItemFactory extends Factory
             'quantity' => $this->faker->randomFloat(2, 0, 3000.00),
             'unit' => $this->faker->randomElement(['l', 'g']),
             'price' => $this->faker->randomFloat(2, 0, 3000.00),
+            'catalogue_id' => $this->faker->numberBetween(1, 100),
         ];
     }
 }

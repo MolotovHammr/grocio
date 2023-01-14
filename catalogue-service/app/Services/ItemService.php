@@ -39,7 +39,7 @@ class ItemService
             'price' => $item->price,
             'catalogue_id' => $item->catalogue_id,
         ]);
-        return Item::create($itemData);
+        return $item;
     }
 
     public function update(Int $itemId, Array $newItemData)
