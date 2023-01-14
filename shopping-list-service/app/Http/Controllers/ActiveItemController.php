@@ -25,19 +25,19 @@ class ActiveItemController extends Controller
         }
     }
 
-    public function increase(int $id, ActiveItemService $activeItemService)
+    public function increase(Request $request, int $id, int $activeItemId, ActiveItemService $activeItemService)
     {
         try {
-            $activeItemService->increase($id);
+            $activeItemService->increase($activeItemId);
         } catch (\Throwable $th) {
             throw $th;
         }
     }
 
-    public function decrease(int $id, ActiveItemService $activeItemService)
+    public function decrease(int $id, int $activeItemId,ActiveItemService $activeItemService)
     {
         try {
-            $activeItemService->decrease($id);
+            $activeItemService->decrease($activeItemId);
         } catch (\Throwable $th) {
             throw $th;
         }

@@ -18,4 +18,8 @@ class ShoppingList extends Model
    public function activeItems(){
          return $this->hasMany(ActiveItem::class);
    }
+
+   public function items(){
+         return $this->hasMany(Item::class);
+   }
 }

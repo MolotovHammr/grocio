@@ -27,4 +27,7 @@ Route::get('/health', function (Request $request){
 Route::post('/shopping-lists', [ShoppingListController::class, 'create']);
 Route::get('/shopping-lists/{id}', [ShoppingListController::class, 'show']);
 Route::post('/shopping-lists/{id}/active-items', [ActiveItemController::class, 'addActiveItem']);
+Route::post('/shopping-lists/{id}/active-items/{activeItemId}/increase', [ActiveItemController::class, 'increase']);
+Route::post('/shopping-lists/{id}/active-items/{activeItemId}/decrease', [ActiveItemController::class, 'decrease']);
+
 
