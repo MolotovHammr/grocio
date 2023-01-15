@@ -5,7 +5,7 @@ metadata:
     service.beta.kubernetes.io/do-loadbalancer-name: "catalogue-service"
   name: catalogue-service
 spec:
-  # type: LoadBalancer
+  type: LoadBalancer
   selector:
     app: catalogue
   ports:

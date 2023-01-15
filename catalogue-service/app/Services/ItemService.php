@@ -31,14 +31,14 @@ class ItemService
     public function create(Array $itemData): Item
     {
         $item = Item::create($itemData);
-        ItemCreated::dispatch([
-            'name' => $item->name,
-            'quantity' => $item->quantity,
-            'unit' => $item->unit,
-            'price' => $item->price,
-            'catalogue_item_id' => $item->id,
-            'shopping_list_id' => $item->catalogue_id,
-        ]);
+        // ItemCreated::dispatch([
+        //     'name' => $item->name,
+        //     'quantity' => $item->quantity,
+        //     'unit' => $item->unit,
+        //     'price' => $item->price,
+        //     'catalogue_item_id' => $item->id,
+        //     'shopping_list_id' => $item->catalogue_id,
+        // ]);
         return $item;
     }
 

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: catalogue
 spec:
-  replicas: 8
+  replicas: 4
   selector:
     matchLabels:
       app: catalogue
@@ -20,8 +20,8 @@ spec:
         #   requests:
         #     memory: "100Mi"
         #     cpu: "0.05"
-          # limits:
-          #   memory: "256Mi"
-          #   cpu: "0.1"
+          requests:
+            memory: "128Mi"
+            cpu: "0.08"
         ports:
         - containerPort: 80
