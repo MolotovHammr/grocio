@@ -1,12 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-test('basic test', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-  const title = page.locator('text=Playwright');
-  await expect(title).toBeVisible();
-} );
-
-
 test('test registeration', async ({ page }) => {
   await page.goto('http://localhost:3000/');
   await page.getByRole('link', { name: 'Register' }).click();
