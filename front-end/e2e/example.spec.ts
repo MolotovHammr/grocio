@@ -31,3 +31,4 @@ test('test registeration', async ({ page }) => {
   await page.locator('input[name="age"]').fill('1999-06-30');
   await page.getByRole('button', { name: 'Register' }).click();
 });
+

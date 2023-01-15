@@ -11,7 +11,7 @@
 <form method="POST" action="?/create" >
     <h1>Create Item</h1>
     {#if form?.success}
-    <div>Item successfully cerated!</div> 
+    <div>Item successfully created!</div> 
     {/if}
     
     <div>
