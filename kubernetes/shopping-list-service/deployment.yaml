@@ -25,7 +25,3 @@ spec:
         #     cpu: "500m"
         ports:
         - containerPort: 80
-        # lifecycle:
-        #     postStart:
-        #       exec:
-        #         command: ["/bin/sh", "-c", "nohup php artisan queue:work --daemon &"]
